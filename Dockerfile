@@ -2,7 +2,7 @@
 FROM bitnami/minideb:buster
 
 # Install wget
-RUN apt-get update && apt-get install -y wget screen \
+RUN apt-get update && apt-get install -y wget \
   && rm -rf /var/lib/apt/lists/*
 
 # Install linux node binaries
@@ -23,4 +23,4 @@ ENV GALA_PASSWORD       x
 ENV NODE_SPECIFIER      1
 
 # Start the gala node
-ENTRYPOINT ["screen", "-m", "bash", "startup.sh"]
+ENTRYPOINT ./startup.sh
