@@ -14,7 +14,7 @@ You will first need to install Docker on your host machine (including VPS instan
 - **macOS**:
     - Intel Macs: [Install Docker on Intel Macs](https://docs.docker.com/docker-for-mac/install/)
     - M1 Macs: [Install Docker on Apple Silicon](https://docs.docker.com/docker-for-mac/apple-m1/)
-- **Linux**: [Install]
+- **Linux**:
     - Ubuntu: [Install Docker on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
     - Debian: [Install Docker on Debian](https://docs.docker.com/engine/install/debian/)
     - Fedora: [Install Docker on Fedora](https://docs.docker.com/engine/install/fedora/)
