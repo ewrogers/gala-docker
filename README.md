@@ -76,6 +76,10 @@ This should show you a simple terminal-based UI of the node's progress. Press `C
 
 ## Troubleshooting
 
+### How can I be sure I am getting credit for my node?
+
+You should check your [Account Page](https://app.gala.games/account) under `Node Info` and see the expected number of nodes online. If the number remains incorrect after 5 minutes, check your containers for any errors (see next question).
+
 ### My node is running but I'm not getting credit, what's the deal?
 The problem is likely that your machine ID is not unique in the Gala network. This is common when using VPS providers, but can be fixed easily.
 
