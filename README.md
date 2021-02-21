@@ -8,7 +8,7 @@ If this guide is helpful to you, I'd appreciate if you used my Gala [referal lin
 
 ### Docker
 
-You will first need to install Docker on your host machine.
+You will first need to install Docker on your host machine (including VPS instances).
 
 - **Windows**: [Install Docker on Windows](https://docs.docker.com/docker-for-windows/install/)
 - **macOS**:
