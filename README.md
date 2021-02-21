@@ -4,6 +4,14 @@ This Dockerfile is used to run a [Gala Node](https://gala.fan/9yqaqUonx) contain
 
 If this guide is helpful to you, I'd appreciate if you used my Gala [referal link](https://gala.fan/9yqaqUonx) if you decide to buy a node. Thanks, it really helps! :smiley:
 
+## Why not use the Linux instructions from Gala Games?
+
+Unfortunately, at the time of writing their Linux guide is fairly poor and not very scalable. It creates a `systemd` service and offers very little in terms of logging output and seeing the progress of your node throughout the day. For anyone who has tried to deploy a Linux node, it has been frustrating.
+
+Docker solves both of these problems. Each container is run in an entirely isolated environment, allowing muliple nodes to easily be run on the same machine via the `NODE_SPECIFIER` variable. It also allows us to peek into the container and see the UI progress of each node.
+
+For more advanced setups, this could be run in a Docker Swarm cluster and be given CPU/memory limitations per container. Basically, containerize all the things to win!
+
 ## Installation
 
 ### Docker
