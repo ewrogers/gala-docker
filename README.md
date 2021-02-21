@@ -39,7 +39,7 @@ $ docker images | grep gala
 
 ### Configure Node
 
-Once you have Docker installed and built the container image, you will need to first create file for your Gala credentials:
+Once you have Docker installed and built the container image, you will need to configure the nodes with your Gala credentials:
 
 ```
 $ ./configure
