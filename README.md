@@ -24,6 +24,7 @@ You will need to build the simple container on your Docker host machine. Once yo
 
 ```
 $ git clone https://github.com/ewrogers/gala-docker.git
+$ cd gala-docker
 $ docker build -t gala-node:latest .
 ```
 
