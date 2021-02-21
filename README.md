@@ -73,7 +73,7 @@ You may be wondering why we specified the `-it` command line arguments while als
 $ docker attach gala-node-1
 ```
 
-This should show you a simple terminal-based UI of the node's progress. Press `CTRL+P, CTRL+Q` to dettach from the container's TTY.
+This should show you a simple terminal-based UI of the node's progress. Press <kbd>Ctrl</kbd> + <kbd>P</kbd>, <kbd>Ctrl</kbd> + <kbd>Q</kbd> to dettach from the container's TTY.
 
 ![Image alt text](screenshot.png?raw=true)
 
