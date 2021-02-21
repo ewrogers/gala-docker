@@ -75,6 +75,8 @@ $ docker attach gala-node-1
 
 This should show you a simple terminal-based UI of the node's progress. Press `CTRL+P, CTRL+Q` to dettach from the container's TTY.
 
+![Image alt text](screenshot.png?raw=true)
+
 **NOTE:** Despite the program displaying "ESC to exit", you should not use that as it will terminate the node. Fortunately, it will automatically be restarted (assuming you used the `--restart=unless-stopped` argument when creating the container). Not a big deal, just avoid restarting your node unncessarily, but you won't lose progress for the day.
 
 ## Troubleshooting
