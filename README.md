@@ -62,6 +62,8 @@ $ docker run -itd --name "gala-node-1" \
 
 If you want to update the `NODE_SPECIFIER`, append the `-e NODE_SPECIFIER=x` argument in the command above. This should only be used when running more than one container on the same Docker host.
 
+**NOTE:** The `-v /etc/machine-id:/etc/machine-id` line is very important! If you omit this, every time your container starts up it will have a different machine ID and you will lose progress across restarts! This mount ensures that you retain the same machine ID across reboots/restarts and always get proper credit.
+
 ### Peeking into the Container
 
 You may be wondering why we specified the `-it` command line arguments while also using the `-d` (daemon) background flag. This gives an interactive TTY terminal that we can use to "peek" and see how the node is running.
