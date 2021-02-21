@@ -111,3 +111,7 @@ Try the following in a **root** shell:
 
 You will also need to restart any running Gala node Docker containers for the machine ID changes to be seen by them.
 
+### I'm getting this Updater 500 Error all the time, what should I do?
+
+You can safely ignore that, it just means that the version check server isn't working properly. It won't affect your progress for the day.
+
