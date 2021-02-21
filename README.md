@@ -37,17 +37,17 @@ $ docker images | grep gala
 
 ## Usage
 
-### Credentials
+### Configure Node
 
-Once you have Docker installed and built the container image, you will need to first create file for your Gala credentials:
+Once you have Docker installed and built the container image, you will need to configure the nodes with your Gala credentials:
 
 ```
-$ echo "GALA_EMAIL=<your email goes here>" > .env
-$ echo "GALA_PASSWORD=<your password goes here>" >> .env
-$ echo "NODE_SPECIFIER=1" >> .env
+$ ./configure
 ```
 
-**NOTE:** Unless you are running multiple nodes on the same Docker host, you should leave `NODE_SPECIFIER` as the default value of `1`.
+You will be prompted to enter your Gala email and password for running the node. You can verify them by checking the `.env` file generated. You can either modify them there or re-run the `configure` script to overwrite them at any time.
+
+**NOTE:** You will need delete and recreate any existing Gala node containers for them to take your new credentials.
 
 ### Running the Container
 
