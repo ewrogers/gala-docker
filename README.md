@@ -57,7 +57,7 @@ $ ./configure
 
 You will be prompted to enter your Gala email and password for running the node. You can verify them by checking the `.env` file generated. You can either modify them there or re-run the `configure` script to overwrite them at any time.
 
-**NOTE:** You will need delete and recreate any existing Gala node containers for them to take your new credentials.
+**NOTE:** You will need stop -> remove -> recreate any existing Gala node containers for them to take your new credentials.
 
 ### Running the Container
 
