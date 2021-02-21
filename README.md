@@ -1,6 +1,6 @@
 # Gala Node Dockerfile
 
-This Dockerfile is used to run a (Gala Node)[https://gala.fan/9yqaqUonx] containerized in Docker. It uses a lean Debian 10 (Buster) image but should run on any Docker host that can run Linux containers (including Windows and MacOS).
+This Dockerfile is used to run a [Gala Node](https://gala.fan/9yqaqUonx) containerized in Docker. It uses a lean Debian 10 (Buster) image but should run on any Docker host that can run Linux containers (including Windows and MacOS).
 
 ## Installation
 
