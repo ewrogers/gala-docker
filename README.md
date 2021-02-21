@@ -81,6 +81,10 @@ This should show you a simple terminal-based UI of the node's progress. Press <k
 
 ## Troubleshooting
 
+### My containers are crashing or constantly restarting, why?
+
+First step should be to check your logs, via `docker logs <container>`. You may see errors regarding account authentication or network problems here. Next step would be to check your `.env` file that you have the correct and up to date credentials. Remember to stop -> remove -> recreate any containers if you recently updated this file.
+
 ### How can I be sure I am getting credit for my node?
 
 You should check your [Account Page](https://app.gala.games/account) under `Node Info` and see the expected number of nodes online. If the number remains incorrect after 5 minutes, check your containers for any errors (see next question).
