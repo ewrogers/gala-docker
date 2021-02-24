@@ -95,6 +95,11 @@ This should show you a simple terminal-based UI of the node's progress. Press <k
 
 Your Gala node will contact the Gala server periodically throughout the day. Each time it does, you gain credit for the day **by unique machine ID**. This is why is important that you retain the same machine ID each time your node runs, so you don't split up credit across several IDs. **To get credit for the daily distribution, you must reach 100% for that machine ID**. Meaning, if you get 95% on one and 5% on another, you do not receive credit.
 
+### What is the NODE_SPECIFIER for?
+
+This is only used when you are running more than one Gala node on the same machine (or VPS). By default, this value is `1`, and is appended to your machine ID when contacting the Gala server for daily distribution credit. Since each machine has its own unique ID, you do not need it when running a single node on that machine.
+
+However, when you are running multiple nodes on a single machine you should increment this for each node. For example, the second one would be `-e NODE_SPECIFIER=2`, and so on. This way you can get multiple node credit for the same machine ID without needing to spin up multiple VPS instances or physical machines.
 
 ### My containers are crashing or constantly restarting, why?
 
