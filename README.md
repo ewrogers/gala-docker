@@ -91,6 +91,12 @@ This should show you a simple terminal-based UI of the node's progress. Press <k
 
 ## FAQ & Troubleshooting
 
+### How much system resources does each node require?
+
+Right now, the requirements are very low due to the node not performing a great deal of work. CPU usage is <10% and memory usage is around 60 MB per container. So you could run several nodes on a single 1GB VPS instance or old computer. However, these system requirements are likely to increase as the Gala game network develops and expands.
+
+For fun, you can run `docker stats` to see the utilization in realtime.
+
 ### How is the credit calculated?
 
 Your Gala node will contact the Gala server periodically throughout the day. Each time it does, you gain credit for the day **by unique machine ID**. This is why is important that you retain the same machine ID each time your node runs, so you don't split up credit across several IDs. **To get credit for the daily distribution, you must reach 100% for that machine ID**. Meaning, if you get 95% on one and 5% on another, you do not receive credit.
