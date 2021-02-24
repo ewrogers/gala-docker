@@ -89,7 +89,12 @@ This should show you a simple terminal-based UI of the node's progress. Press <k
 
 **NOTE:** Despite the program displaying "ESC to exit", you should not use that as it will terminate the node. Fortunately, it will automatically be restarted (assuming you used the `--restart=unless-stopped` argument when creating the container). Not a big deal, just avoid restarting your node unncessarily, but you won't lose progress for the day.
 
-## Troubleshooting
+## FAQ & Troubleshooting
+
+### How is the credit calculated?
+
+Your Gala node will contact the Gala server periodically throughout the day. Each time it does, you gain credit for the day **by unique machine ID**. This is why is important that you retain the same machine ID each time your node runs, so you don't split up credit across several IDs. **To get credit for the daily distribution, you must reach 100% for that machine ID**. Meaning, if you get 95% on one and 5% on another, you do not receive credit.
+
 
 ### My containers are crashing or constantly restarting, why?
 
