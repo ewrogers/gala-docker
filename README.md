@@ -16,7 +16,9 @@ For more advanced setups, this could be run in a Docker Swarm cluster and be giv
 
 ### Docker
 
-You will first need to install Docker on your host machine (including VPS instances). I personally find [Vultr](https://www.vultr.com/?ref=8801319) to be one of the most affordable VPS providers.
+You will first need to install Docker on your host machine (including VPS instances).
+
+I personally find [Vultr](https://www.vultr.com/?ref=8809552-6G) to be one of the most affordable VPS providers, feel free to signup with the link for a $100 credit.
 
 - **Windows**: [Install Docker on Windows](https://docs.docker.com/docker-for-windows/install/)
 - **macOS**:
