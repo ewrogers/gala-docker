@@ -95,7 +95,7 @@ This should show you a simple terminal-based UI of the node's progress. Press <k
 
 ### How much system resources does each node require?
 
-Right now, the requirements are very low due to the node not performing a great deal of work. CPU usage is <10% and memory usage is around 60 MB per container. So you could run several nodes on a single 1GB VPS instance or old computer. However, these system requirements are likely to increase as the Gala game network develops and expands.
+Right now, the requirements are very low due to the node not performing a great deal of work. CPU usage is <10% and memory usage is around 60 MB per container. So you could run several nodes on a single 1GB VPS instance or old computer. **However, these system requirements are likely to increase as the Gala game network develops and expands.**
 
 For fun, you can run `docker stats` to see the utilization in realtime.
 
