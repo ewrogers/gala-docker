@@ -12,13 +12,13 @@ Docker solves both of these problems. Each container is run in an entirely isola
 
 For more advanced setups, this could be run in a Docker Swarm cluster and be given CPU/memory limitations per container.
 
+**NOTE: The Gala Node does NOT support IPv6 networking!** You must use IPv4 networking for it work properly.
+
 ## Installation
 
 ### Docker
 
 You will first need to install Docker on your host machine (including VPS instances).
-
-**NOTE: The Gala Node does NOT support IPv6 networking!**
 
 I personally find [Vultr](https://www.vultr.com/?ref=8809552-6G) to be one of the most affordable VPS providers, feel free to signup with the link for a $100 credit.
 
