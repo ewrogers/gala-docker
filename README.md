@@ -16,7 +16,7 @@ For more advanced setups, this could be run in a Docker Swarm cluster and be giv
 
 ### Docker
 
-You will first need to install Docker on your host machine (including VPS instances).
+You will first need to install Docker on your host machine (including VPS instances). **NOTE: The Gala Node does NOT support IPv6 networking!**
 
 I personally find [Vultr](https://www.vultr.com/?ref=8809552-6G) to be one of the most affordable VPS providers, feel free to signup with the link for a $100 credit.
 
