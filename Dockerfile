@@ -24,5 +24,5 @@ ENV GALA_PASSWORD       x
 ENV NODE_SPECIFIER      1
 
 # Start the gala node
-CMD ["/bin/bash"]
-ENTRYPOINT "startup.sh"
+ENTRYPOINT ["/bin/bash"]
+CMD ["startup.sh"]
