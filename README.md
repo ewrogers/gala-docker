@@ -32,6 +32,8 @@ I personally find [Vultr](https://www.vultr.com/?ref=8809552-6G) to be one of th
     - Fedora: [Install Docker on Fedora](https://docs.docker.com/engine/install/fedora/)
     - CentOS: [Install Docker on CentOS](https://docs.docker.com/engine/install/centos/)
 
+**Gala node is currently only supported on the x86/64 architecture.** So you won't be able to run it on a Raspberry Pi or similar ARM platform without using a translation/emulation layer like qemu (untested and unsupported).
+
 #### Windows Users
 
 Make sure you are running Linux containers, you can check here:
