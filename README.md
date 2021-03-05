@@ -87,7 +87,7 @@ $ docker run -itd --name "gala-node-1" \
   gala-node:latest
 ```
 
-**Windows Users**: You won't have an `/etc/machine-id` file. Instead you should run `wmic csproduct get UUID` and copy that value into a file called `machine-id.txt` and modify the command above to use `-v machine-id.txt:/etc/machine-id` instead.
+**Windows Users**: You won't have an `/etc/machine-id` file locally. Instead you should run `wmic csproduct get UUID` and copy that `UUID` (without dashes) into a file called `machine-id.txt` and modify the command above to use `-v machine-id.txt:/etc/machine-id` instead.
 
 If you want to update the `NODE_SPECIFIER`, append the `-e NODE_SPECIFIER=x` argument in the command above. This should only be used when running more than one container on the same Docker host.
 
