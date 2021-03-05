@@ -87,6 +87,8 @@ $ docker run -itd --name "gala-node-1" \
   gala-node:latest
 ```
 
+**Windows Users**: You won't have an `/etc/machine-id` file. Instead you should run `wmic csproduct get UUID` and copy that value into a file called `machine-id.txt` and modify the command above to use `-v machine-id.txt:/etc/machine-id` instead.
+
 If you want to update the `NODE_SPECIFIER`, append the `-e NODE_SPECIFIER=x` argument in the command above. This should only be used when running more than one container on the same Docker host.
 
 **NOTE:** The `-v /etc/machine-id:/etc/machine-id` line is very important! If you omit this, every time your container starts up it will have a different machine ID and you will lose progress across restarts! This mount ensures that you retain the same machine ID across reboots/restarts and always get proper credit.
@@ -132,7 +134,7 @@ First step should be to check your logs, via `docker logs <container>`. You may 
 You should check your [Account Page](https://app.gala.games/account) under `Node Info` and see the expected number of nodes online. If the number remains incorrect after 5 minutes, check your containers for any errors (see next question).
 
 ### My node is running but I'm not getting credit, what's the deal?
-The problem is likely that your machine ID is not unique in the Gala network. This is common when using VPS providers, but can be fixed easily.
+The problem is likely that your machine ID is not unique in the Gala network. This is common when using Linux on VPS providers, but can be fixed easily.
 
 Try the following in a **root** shell:
 ```
