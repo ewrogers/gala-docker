@@ -32,6 +32,13 @@ I personally find [Vultr](https://www.vultr.com/?ref=8809552-6G) to be one of th
     - Fedora: [Install Docker on Fedora](https://docs.docker.com/engine/install/fedora/)
     - CentOS: [Install Docker on CentOS](https://docs.docker.com/engine/install/centos/)
 
+#### Windows Users
+
+Make sure you are running Linux containers, you can check here:
+![Windows Switch Daemon](screenshots/switchdaemon.png?raw=true)
+
+If it says "Switch to Windows containers..." that means you're already set to use Linux containers (which is good).
+
 ### Build Container
 
 You will need to build the simple container on your Docker host machine. Once you build the container you can publish it to your own Docker container repository for reuse across installations.
