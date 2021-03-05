@@ -65,7 +65,7 @@ If you have issues with the command above, try the following:
 
 You will be prompted to enter your Gala email and password for running the node. You can verify them by checking the `.env` file generated. You can either modify them there or re-run the `configure` script to overwrite them at any time.
 
-If you *still* cannot run the script, create the `.env` file manually with the following contents:
+If you *still* cannot run the script (or are on Windows), create the `.env` file manually with the following contents:
 
 ```
 GALA_EMAIL=<your email login>
