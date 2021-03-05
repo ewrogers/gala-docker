@@ -59,7 +59,19 @@ Once you have Docker installed and built the container image, you will need to c
 $ ./configure
 ```
 
+If you have issues with the command above, try the following:
+
+`bash configure.sh` or `sh configure.sh` depending on your shell.
+
 You will be prompted to enter your Gala email and password for running the node. You can verify them by checking the `.env` file generated. You can either modify them there or re-run the `configure` script to overwrite them at any time.
+
+If you *still* cannot run the script, create the `.env` file manually with the following contents:
+
+```
+GALA_EMAIL=<your email login>
+GALA_PASSWORD=<your password>
+NODE_SPECIFIER=1
+```
 
 **NOTE:** You will need stop -> remove -> recreate any existing Gala node containers for them to take your new credentials.
 
