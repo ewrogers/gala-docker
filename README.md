@@ -77,9 +77,9 @@ NODE_SPECIFIER=1
 
 ### Running the Container
 
-Now you are ready to run the container! Use the following command:
+Now you are ready to run the container!
 
-#### Linux:
+#### Linux/macOS:
 ```
 $ docker run -itd --name "gala-node-1" \
   --restart=unless-stopped \
