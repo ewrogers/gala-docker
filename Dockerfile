@@ -16,6 +16,7 @@ RUN mkdir -p /usr/local/bin \
 RUN mkdir -p /gala
 WORKDIR /gala
 COPY startup.sh .
+RUN chmod +x startup.sh
 
 # Default environment variables
 ENV GALA_EMAIL          user@nowhere.com
