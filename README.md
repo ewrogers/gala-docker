@@ -79,6 +79,7 @@ NODE_SPECIFIER=1
 
 Now you are ready to run the container! Use the following command:
 
+#### Linux:
 ```
 $ docker run -itd --name "gala-node-1" \
   --restart=unless-stopped \
@@ -87,11 +88,19 @@ $ docker run -itd --name "gala-node-1" \
   gala-node:latest
 ```
 
-**Windows Users**: You won't have an `/etc/machine-id` file locally. Instead you should run `wmic csproduct get UUID` and copy that `UUID` (without dashes) into a file called `machine-id.txt` and modify the command above to use `-v machine-id.txt:/etc/machine-id` instead.
+**NOTE:** The `-v /etc/machine-id:/etc/machine-id` line is very important! If you omit this, every time your container starts up it will have a different machine ID and you will lose progress across restarts! This mount ensures that you retain the same machine ID across reboots/restarts and always get proper credit.
+
+#### Windows:
+
+You won't have an `/etc/machine-id` file locally. Instead you should run `wmic csproduct get UUID` and copy that `UUID` (without dashes) into a file called `machine-id.txt` and modify the command above to use `-v machine-id.txt:/etc/machine-id` instead.
+
+```
+$ docker run -itd --name "gala-node-1" --restart=unless-stopped --env-file .env -v machine-id.txt:/etc/machine-id gala-node:latest
+```
+
+### Node Specifier (Optional)
 
 If you want to update the `NODE_SPECIFIER`, append the `-e NODE_SPECIFIER=x` argument in the command above. This should only be used when running more than one container on the same Docker host.
-
-**NOTE:** The `-v /etc/machine-id:/etc/machine-id` line is very important! If you omit this, every time your container starts up it will have a different machine ID and you will lose progress across restarts! This mount ensures that you retain the same machine ID across reboots/restarts and always get proper credit.
 
 ### Peeking into the Container
 
