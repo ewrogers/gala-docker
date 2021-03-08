@@ -31,12 +31,8 @@ I personally find [Vultr](https://www.vultr.com/?ref=8809552-6G) to be one of th
     - Debian: [Install Docker on Debian](https://docs.docker.com/engine/install/debian/)
     - Fedora: [Install Docker on Fedora](https://docs.docker.com/engine/install/fedora/)
     - CentOS: [Install Docker on CentOS](https://docs.docker.com/engine/install/centos/)
-- **Raspberry Pi**:
-    - Raspbian/Debian: `curl -fsSL https://get.docker.com -o get-docker.sh` (Follow script instructions)
 
 **Gala node is currently only supported on the x86/64 architecture.**
-
-A Raspberry Pi guide is in progress using qemu emulation layer.
 
 #### Windows Users
 
