@@ -158,7 +158,7 @@ Try the following in a **root** shell:
 ```
 # rm /etc/machine-id /var/lib/dbus/machine-id
 # dbus-uuidgen > /etc/machine-id
-# cp /etc/matchine-id /var/lib/dbus/machine-id
+# cp /etc/machine-id /var/lib/dbus/machine-id
 ```
 
 You will also need to restart any running Gala node Docker containers for the machine ID changes to be seen by them.
