@@ -1,9 +1,11 @@
 # Gala Node Dockerfile
 
 ## Node Update (3/19/2021)
-Gala has released an updated version of the node software on 3/19, which is exciting! I will be updating the Docker container to support this new version over the next few days and hope to have it ready in the coming days (3/23).
+Gala has released an updated version of the node software on 3/19, which is exciting! I will be updating the Docker container to support this new version over the next few days and hope to have it ready in the coming week (3/23).
 
 You can continue to run your existing nodes until 3/31/2021, which you will have to then update them to continue operating on the Gala network.
+
+In addition, I will be working on updating the guide to live in the Wiki area of the repo, with individual guide sections for each platform (Windows/macOS/Linux) as well as VPS setup. The goal is to be a very introductory guide in getting nodes up and running this way, though I also plan to cover more topics for those advanced users.
 
 ## Overview
 
