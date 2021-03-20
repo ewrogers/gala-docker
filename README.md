@@ -1,5 +1,12 @@
 # Gala Node Dockerfile
 
+## Node Update (3/19/2021)
+Gala has released an updated version of the node software on 3/19, which is exciting! I will be updating the Docker container to support this new version over the next few days and hope to have it ready in the coming days (3/23).
+
+You can continue to run your existing nodes until 3/31/2021, which you will have to then update them to continue operating on the Gala network.
+
+## Overview
+
 This Dockerfile is used to run a [Gala Node](https://gala.fan/9yqaqUonx) containerized in Docker. It uses a lean Debian 10 (Buster) image but should run on any Docker host that can run Linux containers (including Windows and MacOS).
 
 If this guide is helpful to you, I'd appreciate if you used my Gala [referal link](https://gala.fan/9yqaqUonx) if you decide to buy a node. Thanks, it really helps! :smiley:
