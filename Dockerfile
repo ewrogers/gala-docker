@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y wget \
 
 # Install linux node binaries
 RUN mkdir -p /usr/local/bin \
-  && wget https://static.connectblockchain.net/softnode/linux-headless-node.tar.gz \
+  && wget https://static.gala.games/node/linux-headless-node.tar.gz \
   && tar xvf linux-headless-node.tar.gz \
   && mv linux-headless-node /usr/local/bin/gala-headless-node \
   && rm linux-headless-node.tar.gz
