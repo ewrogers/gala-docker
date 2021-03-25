@@ -5,7 +5,7 @@ This repo has been updated to work on the latest Gala Node v1.1.0 software. If y
 ## Table of Contents
 1. [Overview](#overview)
 2. [Installation](#installation)
-3. [Building the Container](#building the container)
+3. [Building the Container](#building)
 4. [Configuration](#configuration)
 5. [Running the Container](#running the container)
 6. [Checking Node Progress](#checking node progress)
