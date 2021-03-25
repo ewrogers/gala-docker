@@ -180,7 +180,7 @@ You must also update the name of the container to be unique.
 
 If you are trying to run nodes across multiple Gala accounts, you will need to create separate `.env` files for each one. For example, let's pretend I have a total of six nodes spread across three separate gala accounts (2x3).
 
-This assumes you've follow the steps from the [Configuration](#configuration) step on env files and machine IDs.
+This assumes you've follow the steps from the [Configuration](#configuration) section on multiple env files and machine IDs.
 
 Now it's just a matter of starting up each container:
 ```
