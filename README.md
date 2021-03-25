@@ -1,6 +1,6 @@
 # Gala Node Dockerfile
 
-This repo has been updated to work on the latest Gala Node v1.1.0 software.
+This repo has been updated to work on the latest Gala Node v1.1.0 software. If you are looking to upgrade your existing nodes, check out the section below.
 
 ## Overview
 
@@ -52,13 +52,18 @@ You will need to build the simple container on your Docker host machine. Once yo
 ```
 $ git clone https://github.com/ewrogers/gala-docker.git
 $ cd gala-docker
+$ docker build
+$ docker build -t gala-node:1.1.0 .
 $ docker build -t gala-node:latest .
 ```
+
+We run the build command twice so that we have both an explicit `1.1.0` version and a `latest` alias to that. This allows us to rollback to previous versions if something were to go wrong when using `latest`.
 
 Verify the image was successfully built:
 
 ```
 $ docker images | grep gala
+> gala-node         1.1.0     7240420ada66   2 minutes ago      236MB
 > gala-node         latest    7240420ada66   2 minutes ago      236MB
 ```
 
@@ -115,6 +120,66 @@ $ docker run -itd --name "gala-node-1" --restart=unless-stopped --env-file .env 
 
 If you want to update the `NODE_SPECIFIER`, append the `-e NODE_SPECIFIER=x` argument in the command above. This should only be used when running more than one container on the same Docker host.
 
+For example, on the second node for my account:
+```
+$ docker run -itd --name "gala-node-2" \
+  --restart=unless-stopped \
+  --e NODE_SPECIFIER=2 \
+  --env-file .env \
+  -v /etc/machine-id:/etc/machine-id \
+  gala-node:latest
+```
+
+**NOTE:** Node specifiers only work when the node licenses are on the same Gala account. If you have multiple Gala accounts, you will need to take a different approach below.
+
+
+### Multiple Gala Accounts
+
+If you are trying to run nodes across multiple Gala accounts, you will need to create separate `.env` files for each one. For example, let's pretend I have a total of six nodes spread across three separate gala accounts (2x3).
+
+All of the following commands should be run within the `gala-docker/` folder you cloned from earlier.
+
+#### Configuring Accounts
+
+Setting up each account credentials:
+```
+$ ./configure
+$ mv .env .env.first
+$ ./configure
+$ mv .env .env.second
+$ ./configure
+$ mv .env .env.third
+```
+
+#### Configuring Machine IDs
+
+Since each Gala account expects a unique machine ID for their node(s), we'll generate one for each account instead of using the standard `/etc/machine-id`:
+```
+$ dbus-uuidgen > machine-id-first
+$ dbus-uuidgen > machine-id-second
+$ dbus-uuidgen > machine-id-third
+```
+
+#### Starting Containers
+Now it's just a matter of starting up each container:
+```
+$ docker run -itd --name "gala-node-first-1" \
+  --restart=unless-stopped \
+  --e NODE_SPECIFIER=1 \
+  --env-file .env.first \
+  -v machine-id-first:/etc/machine-id \
+  gala-node:latest
+  
+$ docker run -itd --name "gala-node-first-2" \
+  --restart=unless-stopped \
+  --e NODE_SPECIFIER=2 \
+  --env-file .env.first \
+  -v machine-id-first:/etc/machine-id \
+  gala-node:latest
+```
+
+Repeat the following while changing the `--name`, `-e NODE_SPECIFIER=`, `--env-file=` and `-v machine-id-xxx:/etc/machine-id` values as necessary. You can do this for as many accounts and nodes as you need per account.
+
 ### Peeking into the Container
 
 You may be wondering why we specified the `-it` command line arguments while also using the `-d` (daemon) background flag. This gives an interactive TTY terminal that we can use to "peek" and see how the node is running.
@@ -128,6 +193,10 @@ This should show you a simple terminal-based UI of the node's progress. Press <k
 ![Linux terminal UI](screenshots/ui.png?raw=true)
 
 **NOTE:** Despite the program displaying "ESC to exit", you should not use that as it will terminate the node. Fortunately, it will automatically be restarted (assuming you used the `--restart=unless-stopped` argument when creating the container). Not a big deal, just avoid restarting your node unncessarily, but you won't lose progress for the day.
+
+## Upgrading the Node Software
+
+If you already have existing containers running the older Gala node software, it is easy to upgrade your nodes.
 
 ## FAQ & Troubleshooting
 
