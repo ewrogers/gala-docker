@@ -114,7 +114,7 @@ NODE_SPECIFIER=1
 
 ### Multiple Gala Accounts
 
-If you are trying to run nodes across multiple Gala accounts, you will need to create separate `.env` files for each one. For example, let's pretend I have a total of six nodes spread across three separate gala accounts (2x3).
+If you are trying to run nodes across multiple Gala accounts, you will need to create separate `.env` files for each one. For example, let's pretend I have a total of six nodes spread across three separate gala accounts (3x2).
 
 #### Configuring Accounts
 
@@ -136,8 +136,6 @@ $ dbus-uuidgen > machine-id-first
 $ dbus-uuidgen > machine-id-second
 $ dbus-uuidgen > machine-id-third
 ```
-
-**NOTE:** You will need stop -> remove -> recreate any existing Gala node containers for them to take your new credentials (such as updating your password).
 
 ## Running the Container
 
@@ -164,7 +162,7 @@ $ docker run -itd --name "gala-node-1" --restart=unless-stopped --env-file .env 
 
 ### Multiple Nodes - Same Account
 
-If you wanting to run multiple nodes for the same Gala account, you will use the `NODE_SPECIFIER` variable for the second (and beyond) node for that account. To do that, update the `NODE_SPECIFIER`, append the `-e NODE_SPECIFIER=x` argument in the command above when running the additional nodes. This is not required for the first node, as it defaults to `1` automatically.
+If you want to run multiple nodes for the same Gala account, you will use the `NODE_SPECIFIER` variable for the second (and beyond) node for that account. To do that, update the `NODE_SPECIFIER`, append the `-e NODE_SPECIFIER=x` argument in the command above when running the additional nodes. This is not required for the first node, as it defaults to `1` automatically.
 
 For example, on the second node for my account:
 ```
