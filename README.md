@@ -9,7 +9,7 @@ This repo has been updated to work on the latest Gala Node v1.1.0 software. If y
 4. [Configuration](#configuration)
 5. [Running the Container](#running-the-container)
 6. [Checking Node Progress](#checking-node-progress)
-7. [Upgrading Node Software](#upgrading-node-software)
+7. [Upgrading the Container](#upgrading-the-container)
 8. [Frequently Asked Questions](#frequently-asked-questions)
 
 ## Overview
@@ -22,7 +22,7 @@ If this guide is helpful to you, I'd appreciate if you used my Gala [referal lin
 
 - 1 CPU Core
 - 256MB RAM (512MB Recommended)
-- 10GB SSD SPace
+- 10GB Disk Space (Solid State Recommended)
 - IPv4 Address (IPv6 not supported)
 - Stable Broadband Connection (50+ Mbit)
 
@@ -218,17 +218,27 @@ This should show you a simple terminal-based UI of the node's progress. Press <k
 
 **NOTE:** Despite the program displaying "ESC to exit", you should not use that as it will terminate the node. Fortunately, it will automatically be restarted (assuming you used the `--restart=unless-stopped` argument when creating the container). Not a big deal, just avoid restarting your node unncessarily, but you won't lose progress for the day.
 
-## Upgrading the Node Software
+## Upgrading the Container
 
 If you already have existing containers running the older Gala node software, it is easy to upgrade your nodes.
 
+### Rebuild the Container
+
+First run the steps from the [Building the Container](#building-the-container) section. If you already have the repo cloned you can use `git pull` to just get the latest files, no need to clone again.
+
+### Removing the Containers
+
+These commands will stop and remove the running container so it can be replaced.
+```
+$ docker stop gala-node-1
+$ docker rm gala-node-1
+```
+
+### Recreating the Container
+
+Then it is just a matter of recreating the containers using the same commands as you did the first time around. See [Running the Container](#running-the-container) for details.
+
 ## Frequently Asked Questions
-
-### How much system resources does each node require?
-
-Right now, the requirements are very low due to the node not performing a great deal of work. CPU usage is <10% and memory usage is around 60 MB per container. So you could run several nodes on a single 1GB VPS instance or old computer. **However, these system requirements are likely to increase as the Gala game network develops and expands.**
-
-For fun, you can run `docker stats` to see the utilization in realtime.
 
 ### How is the credit calculated?
 
@@ -259,8 +269,3 @@ Try the following in a **root** shell:
 ```
 
 You will also need to restart any running Gala node Docker containers for the machine ID changes to be seen by them.
-
-### I'm getting this Updater 500 Error all the time, what should I do?
-
-You can safely ignore that, it just means that the version check server isn't working properly. It won't affect your progress for the day.
-
