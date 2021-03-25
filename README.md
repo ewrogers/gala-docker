@@ -2,19 +2,39 @@
 
 This repo has been updated to work on the latest Gala Node v1.1.0 software. If you are looking to upgrade your existing nodes, check out the section below.
 
+## Table of Contents
+1. [Overview](#overview)
+2. [Installation](#installation)
+3. [Building the Container](#building the container)
+4. [Configuration](#configuration)
+5. [Running the Container](#running the container)
+6. [Checking Node Progress](#checking node progress)
+7. [Upgrading Nodes](#upgrading nodes)
+8. [Frequently Asked Questions](#frequently asked questions)
+
 ## Overview
 
 This Dockerfile is used to run a [Gala Node](https://gala.fan/9yqaqUonx) containerized in Docker. It uses a lean Debian 10 (Buster) image but should run on any Docker host that can run Linux containers (including Windows and MacOS).
 
 If this guide is helpful to you, I'd appreciate if you used my Gala [referal link](https://gala.fan/9yqaqUonx) if you decide to buy a node. Thanks, it really helps! :smiley:
 
-## Why not use the Linux instructions from Gala Games?
+### System Requirements
+
+- 1 CPU Core
+- 256MB RAM (512MB Recommended)
+- 10GB SSD SPace
+- IPv4 Address (IPv6 not supported)
+- Stable Broadband Connection (50+ Mbit)
+
+**NOTE:** These requirements are subject to change as the Gala Network grows. IPFS will be used in the near future, meaning these requirements will increase **significantly** from what they are now. Most important will be your bandwidth (namely upstream). Prepare accordingly.
+
+### Why not use the Linux instructions from Gala Games?
 
 Unfortunately, at the time of writing their Linux guide is fairly poor and not very scalable. It creates a `systemd` service and offers very little in terms of logging output and seeing the progress of your node throughout the day. For anyone who has tried to deploy a Linux node, it has been frustrating.
 
 Docker solves both of these problems. Each container is run in an entirely isolated environment, allowing muliple nodes to easily be run on the same machine via the `NODE_SPECIFIER` variable. It also allows us to peek into the container and see the UI progress of each node. Since we no longer rely on `systemd`, we can run on a lot more Linux distros as well.
 
-For more advanced setups, this could be run in a Docker Swarm cluster and be given CPU/memory limitations per container.
+For more advanced setups, this could be run in a Docker Swarm cluster and be given CPU/memory limitations per container. As requirements grow, this will likely become more ideal for hosting multiple nodes across multiple VPS/machines but for now it is not required.
 
 **NOTE: The Gala Node does NOT support IPv6 networking!** You must use IPv4 networking for it work properly.
 
@@ -36,7 +56,7 @@ I personally find [Vultr](https://www.vultr.com/?ref=8809552-6G) to be one of th
     - Fedora: [Install Docker on Fedora](https://docs.docker.com/engine/install/fedora/)
     - CentOS: [Install Docker on CentOS](https://docs.docker.com/engine/install/centos/)
 
-**Gala node is currently only supported on the x86/64 architecture.**
+**Gala node is currently only supported on the x86/64 architecture.** Sorry, no Raspberry PIs or other ARMv7 devices yet!
 
 #### Windows Users
 
@@ -45,7 +65,7 @@ Make sure you are running Linux containers, you can check here:
 
 If it says "Switch to Windows containers..." that means you're already set to use Linux containers (which is good).
 
-### Build Container
+## Building the Container
 
 You will need to build the simple container on your Docker host machine. Once you build the container you can publish it to your own Docker container repository for reuse across installations.
 
@@ -67,9 +87,9 @@ $ docker images | grep gala
 > gala-node         latest    7240420ada66   2 minutes ago      236MB
 ```
 
-## Usage
+## Configuration
 
-### Configure Node
+### Gala Account
 
 Once you have Docker installed and built the container image, you will need to configure the nodes with your Gala credentials:
 
@@ -91,53 +111,11 @@ GALA_PASSWORD=<your password>
 NODE_SPECIFIER=1
 ```
 
-**NOTE:** You will need stop -> remove -> recreate any existing Gala node containers for them to take your new credentials.
-
-### Running the Container
-
-Now you are ready to run the container!
-
-#### Linux/macOS:
-```
-$ docker run -itd --name "gala-node-1" \
-  --restart=unless-stopped \
-  --env-file .env \
-  -v /etc/machine-id:/etc/machine-id \
-  gala-node:latest
-```
-
-**NOTE:** The `-v /etc/machine-id:/etc/machine-id` line is very important! If you omit this, every time your container starts up it will have a different machine ID and you will lose progress across restarts! This mount ensures that you retain the same machine ID across reboots/restarts and always get proper credit.
-
-#### Windows:
-
-You won't have an `/etc/machine-id` file locally. Instead you should run `wmic csproduct get UUID` and copy that `UUID` (without dashes) into a file called `machine-id.txt` and modify the command above to use `-v machine-id.txt:/etc/machine-id` instead.
-
-```
-$ docker run -itd --name "gala-node-1" --restart=unless-stopped --env-file .env -v machine-id.txt:/etc/machine-id gala-node:latest
-```
-
-### Node Specifier (Optional)
-
-If you want to update the `NODE_SPECIFIER`, append the `-e NODE_SPECIFIER=x` argument in the command above. This should only be used when running more than one container on the same Docker host.
-
-For example, on the second node for my account:
-```
-$ docker run -itd --name "gala-node-2" \
-  --restart=unless-stopped \
-  --e NODE_SPECIFIER=2 \
-  --env-file .env \
-  -v /etc/machine-id:/etc/machine-id \
-  gala-node:latest
-```
-
-**NOTE:** Node specifiers only work when the node licenses are on the same Gala account. If you have multiple Gala accounts, you will need to take a different approach below.
-
+**NOTE:** You will need stop -> remove -> recreate any existing Gala node containers for them to take your new credentials (such as updating your password).
 
 ### Multiple Gala Accounts
 
 If you are trying to run nodes across multiple Gala accounts, you will need to create separate `.env` files for each one. For example, let's pretend I have a total of six nodes spread across three separate gala accounts (2x3).
-
-All of the following commands should be run within the `gala-docker/` folder you cloned from earlier.
 
 #### Configuring Accounts
 
@@ -160,7 +138,53 @@ $ dbus-uuidgen > machine-id-second
 $ dbus-uuidgen > machine-id-third
 ```
 
-#### Starting Containers
+**NOTE:** You will need stop -> remove -> recreate any existing Gala node containers for them to take your new credentials (such as updating your password).
+
+## Running the Container
+
+Now you are ready to run the container! Here are the commands for running a single node.
+
+### Linux/macOS:
+```
+$ docker run -itd --name "gala-node-1" \
+  --restart=unless-stopped \
+  --env-file .env \
+  -v /etc/machine-id:/etc/machine-id \
+  gala-node:latest
+```
+
+**NOTE:** The `-v /etc/machine-id:/etc/machine-id` line is very important! If you omit this, every time your container starts up it will have a different machine ID and you will lose progress across restarts! This mount ensures that you retain the same machine ID across reboots/restarts and always get proper credit.
+
+### Windows:
+
+You won't have an `/etc/machine-id` file locally. Instead you should run `wmic csproduct get UUID` and copy that `UUID` (without dashes) into a file called `machine-id.txt` and modify the command above to use `-v machine-id.txt:/etc/machine-id` instead.
+
+```
+$ docker run -itd --name "gala-node-1" --restart=unless-stopped --env-file .env -v machine-id.txt:/etc/machine-id gala-node:latest
+```
+
+### Multiple Nodes - Same Account
+
+If you wanting to run multiple nodes for the same Gala account, you will use the `NODE_SPECIFIER` variable for the second (and beyond) node for that account. To do that, update the `NODE_SPECIFIER`, append the `-e NODE_SPECIFIER=x` argument in the command above when running the additional nodes. This is not required for the first node, as it defaults to `1` automatically.
+
+For example, on the second node for my account:
+```
+$ docker run -itd --name "gala-node-2" \
+  --restart=unless-stopped \
+  --e NODE_SPECIFIER=2 \
+  --env-file .env \
+  -v /etc/machine-id:/etc/machine-id \
+  gala-node:latest
+```
+
+You must also update the name of the container to be unique.
+
+### Nodes Across Gala Accounts
+
+If you are trying to run nodes across multiple Gala accounts, you will need to create separate `.env` files for each one. For example, let's pretend I have a total of six nodes spread across three separate gala accounts (2x3).
+
+This assumes you've follow the steps from the [Configuration](#configuration) step on env files and machine IDs.
+
 Now it's just a matter of starting up each container:
 ```
 $ docker run -itd --name "gala-node-first-1" \
@@ -178,9 +202,9 @@ $ docker run -itd --name "gala-node-first-2" \
   gala-node:latest
 ```
 
-Repeat the following while changing the `--name`, `-e NODE_SPECIFIER=`, `--env-file=` and `-v machine-id-xxx:/etc/machine-id` values as necessary. You can do this for as many accounts and nodes as you need per account.
+Repeat the following while changing the `--name`, `-e NODE_SPECIFIER=`, `--env-file=` and `-v machine-id-xxx:/etc/machine-id` values as necessary. You can do this for as many accounts and nodes as you need per account. If you are just running a single node for an account, you can leave off the `NODE_SPECIFIER` argument, as the default of `1` will suffice.
 
-### Peeking into the Container
+## Checking Node Progress
 
 You may be wondering why we specified the `-it` command line arguments while also using the `-d` (daemon) background flag. This gives an interactive TTY terminal that we can use to "peek" and see how the node is running.
 
@@ -198,7 +222,7 @@ This should show you a simple terminal-based UI of the node's progress. Press <k
 
 If you already have existing containers running the older Gala node software, it is easy to upgrade your nodes.
 
-## FAQ & Troubleshooting
+## Frequently Asked Questions
 
 ### How much system resources does each node require?
 
