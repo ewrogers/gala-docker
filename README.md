@@ -171,7 +171,7 @@ For example, on the second node for my account:
 ```
 $ docker run -itd --name "gala-node-2" \
   --restart=unless-stopped \
-  --e NODE_SPECIFIER=2 \
+  -e NODE_SPECIFIER=2 \
   --env-file .env \
   -v /etc/machine-id:/etc/machine-id \
   gala-node:latest
@@ -189,14 +189,14 @@ Now it's just a matter of starting up each container:
 ```
 $ docker run -itd --name "gala-node-first-1" \
   --restart=unless-stopped \
-  --e NODE_SPECIFIER=1 \
+  -e NODE_SPECIFIER=1 \
   --env-file .env.first \
   -v machine-id-first:/etc/machine-id \
   gala-node:latest
   
 $ docker run -itd --name "gala-node-first-2" \
   --restart=unless-stopped \
-  --e NODE_SPECIFIER=2 \
+  -e NODE_SPECIFIER=2 \
   --env-file .env.first \
   -v machine-id-first:/etc/machine-id \
   gala-node:latest
