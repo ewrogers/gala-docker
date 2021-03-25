@@ -1,6 +1,6 @@
 # Gala Node Dockerfile
 
-This repo has been updated to work on the latest Gala Node v1.1.0 software. If you are looking to upgrade your existing nodes, check out the section below.
+This repo has been updated to work on the latest Gala Node v1.1.0 software. If you are looking to upgrade your existing nodes, check out the [Upgrading the Container](#upgrading-the-container) section below.
 
 ## Table of Contents
 1. [Overview](#overview)
