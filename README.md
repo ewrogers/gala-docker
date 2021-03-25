@@ -139,7 +139,10 @@ $ dbus-uuidgen > machine-id-third
 
 ## Running the Container
 
-Now you are ready to run the container! Here are the commands for running a single node on a single Gala account. If you have multiple nodes on the same account, see the [Multiple Nodes](#multiple-nodes-on-same-account) section. If you have multiple Gala accounts with nodes, see the [Nodes Across Gala Accounts](#nodes-across-gala-accounts) section for how to run them.
+Now you are ready to run the container! Here are the commands for running a single node on a single Gala account.
+
+- If you have multiple nodes on the same account, see the [Multiple Nodes](#multiple-nodes-on-same-account) section.
+- If you have multiple Gala accounts with nodes, see the [Nodes Across Gala Accounts](#nodes-across-gala-accounts) section for how to run them.
 
 ### Linux/macOS:
 ```
