@@ -223,7 +223,7 @@ If you already have existing containers running the older Gala node software, it
 
 First run the steps from the [Building the Container](#building-the-container) section. If you already have the repo cloned you can use `git pull` to just get the latest files, no need to clone again.
 
-### Removing the Containers
+### Removing the Container
 
 These commands will stop and remove the running container so it can be replaced.
 ```
@@ -234,6 +234,8 @@ $ docker rm gala-node-1
 ### Recreating the Container
 
 Then it is just a matter of recreating the containers using the same commands as you did the first time around. See [Running the Container](#running-the-container) for details.
+
+Repeat for every node you need to upgrade. You should not have to re-create the `.env` or machine ID files.
 
 ## Frequently Asked Questions
 
