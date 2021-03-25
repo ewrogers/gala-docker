@@ -242,6 +242,10 @@ Repeat for every node you need to upgrade. You should not have to re-create the 
 
 ## Frequently Asked Questions
 
+### Can I vote with the headless node?
+
+You cannot vote using the Linux headless nodes; however, you can download the desktop node for Windows/macOS and vote that way. The UI allows you to allocate multiple votes based on the number of node licenses in your account. No need to touch your headless nodes, just open the UI vote and close the node software on your PC. The headless nodes running will continue to work without any interruptions.
+
 ### How is the credit calculated?
 
 Your Gala node will contact the Gala server periodically throughout the day. Each time it does, you gain credit for the day **by unique machine ID**. This is why is important that you retain the same machine ID each time your node runs, so you don't split up credit across several IDs. **To get credit for the daily distribution, you must reach 100% for that machine ID**. Meaning, if you get 95% on one and 5% on another, you do not receive credit.
