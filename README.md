@@ -139,7 +139,7 @@ $ dbus-uuidgen > machine-id-third
 
 ## Running the Container
 
-Now you are ready to run the container! Here are the commands for running a single node on a single Gala account. If you have multiple nodes on the same account, see the [Multiple Nodes](#multiple-nodes-same-account) section. If you have multiple across, see the [Nodes Across Gala Accounts](#nodes-across-gala-accounts) section for how to run them.
+Now you are ready to run the container! Here are the commands for running a single node on a single Gala account. If you have multiple nodes on the same account, see the [Multiple Nodes](#multiple-nodes-on-same-account) section. If you have multiple across, see the [Nodes Across Gala Accounts](#nodes-across-gala-accounts) section for how to run them.
 
 ### Linux/macOS:
 ```
@@ -160,7 +160,7 @@ You won't have an `/etc/machine-id` file locally. Instead you should run `wmic c
 $ docker run -itd --name "gala-node-1" --restart=unless-stopped --env-file .env -v machine-id.txt:/etc/machine-id gala-node:latest
 ```
 
-### Multiple Nodes - Same Account
+### Multiple Nodes on Same Account
 
 If you want to run multiple nodes for the same Gala account, you will use the `NODE_SPECIFIER` variable for the second (and beyond) node for that account. To do that, update the `NODE_SPECIFIER`, append the `-e NODE_SPECIFIER=x` argument in the command above when running the additional nodes. This is not required for the first node, as it defaults to `1` automatically.
 
