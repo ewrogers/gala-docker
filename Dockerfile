@@ -1,28 +1,38 @@
-# Minimial Debian 10 (Buster) base image (~68mb)
-FROM bitnami/minideb:buster
+# Minimial Debian 11 (Bullseye) base image
+FROM bitnami/minideb:bullseye
+
+ARG DEBIAN_FRONTEND=noninteractive
+ENV GALA_CONFIG_DIR /opt/gala-headless-node
+ENV GALA_CONFIG_FILE $GALA_CONFIG_DIR/config.json
 
 # Install wget
-RUN apt-get update && apt-get install -y wget \
+RUN apt-get update && apt-get install -y \
+    wget \
+    jq \
+    dbus-bin \
   && rm -rf /var/lib/apt/lists/*
 
-# Install linux node binaries
+# Install gala-node linux binaries
 RUN mkdir -p /usr/local/bin \
-  && wget https://static.gala.games/node/linux-headless-node.tar.gz \
-  && tar xvf linux-headless-node.tar.gz \
-  && mv linux-headless-node /usr/local/bin/gala-headless-node \
-  && rm linux-headless-node.tar.gz
+  && mkdir -p $GALA_CONFIG_DIR \
+  && wget https://static.gala.games/node/gala-node.tar.gz \
+  && tar xvf gala-node.tar.gz --directory=/usr/local/bin \
+  && rm gala-node.tar.gz
 
-# Make gala working directory and copy scripts
+# Add default config
+ADD config.json $GALA_CONFIG_DIR
+
+# Create directory for gala node config
 RUN mkdir -p /gala
 WORKDIR /gala
-COPY startup.sh .
-RUN chmod +x startup.sh
 
-# Default environment variables
-ENV GALA_EMAIL          user@nowhere.com
-ENV GALA_PASSWORD       x
-ENV NODE_SPECIFIER      1
+# Copy scripts and make executable
+ADD entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
+# IPFS ports
+EXPOSE 4001 5001
 
 # Start the gala node
 ENTRYPOINT ["/bin/bash"]
-CMD ["startup.sh"]
+CMD ["entrypoint.sh"]

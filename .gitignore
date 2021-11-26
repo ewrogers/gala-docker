@@ -1,3 +1,9 @@
+# macOS folders
 .DS_Store
+
+# Environment variables
 .env
+
+# IDE folders
+.vscode/
 .idea/
